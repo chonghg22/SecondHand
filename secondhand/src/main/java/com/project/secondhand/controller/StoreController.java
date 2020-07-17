@@ -237,6 +237,7 @@ public class StoreController {
 		System.out.println(boardNo + "/boardNo/modifyStoreBoard");
 
 		storeService.getUpdateStoreBoard(boardNo);
+		System.out.println(boardNo+"<---Ctrl//modify/boardNo!!!!!!!!!");
 		Map<String, Object> map = storeService.getUpdateStoreBoard(boardNo);
 		System.out.println(map+"<--Ctrl/modify/map!!!!!!!!!!!!!!!!!!");
 		
@@ -245,6 +246,8 @@ public class StoreController {
 		StoreBoard storeBoard = (StoreBoard)map.get("storeBoard");
 		System.out.println(storeBoard+"<--Ctrl/Modify/storeBoard??????????");
 		
+		model.addAttribute("boardNo", boardNo);
+		System.out.println(boardNo+"<--CTRL.modify.boardNo!!!!!!!!!!");
 		model.addAttribute("board", storeBoard);
 		System.out.println(storeBoard+"<--Ctrl.modify.storeBoard--------------------");
 		model.addAttribute("boardPic", storeBoardPic);
@@ -263,7 +266,7 @@ public class StoreController {
 		storeService.updateStoreBoard(storeBoardAndBoardPic);
 		storeService.getUpdateStoreBoard(boardNo);
 		System.out.println(storeService+"<--storeService^^^^^^^^^^^");
-		return "redirect:/modifyStoreBoard";
+		return "redirect:/storeBoardList";
 	}
 	
 	//업체홍보 삭제하기

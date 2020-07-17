@@ -246,9 +246,11 @@ public class StoreService {
    public int updateStoreBoard(StoreBoardAndBoardPic storeBoardAndBoardPic) {
 	   	System.out.println(storeBoardAndBoardPic+"<--Service/modify/storeBoardAndBoardPic!!!!!!!");
  		int boardNo = storeBoardAndBoardPic.getBoardNo();
+ 		System.out.println(boardNo+"<--보드넘버");
  		StoreBoardPic storeBoardPic = storePicMapper.selectStoreBoardPicByUpdate(boardNo);
  		System.out.println(storeBoardPic+"<--Service//storeBoardPic@@@@@@@@@");
  		String originStoreBoardNameOne = storeBoardPic.getBoardPicNameOne();
+ 		System.out.println(storeBoardPic+"<--storeBoardPic###########");
  		System.out.println(originStoreBoardNameOne+"<--One--------------------");
  		String originStoreBoardNameTwo = storeBoardPic.getBoardPicNameTwo();
  		System.out.println(originStoreBoardNameTwo+"<--two--------------------");
@@ -292,6 +294,7 @@ public class StoreService {
  			System.out.println(mf1.getOriginalFilename()+"<----boardPicNameOne1!!!!!");
  			//이미지 삭제
  			File originFile = new File(path+originStoreBoardNameOne);
+ 			System.out.println(originStoreBoardNameOne+"<----originStoreBoardNameOne&&&&&");
  			//초기 설정 이미지 삭제 x
  			if(originFile.exists()&& ! originStoreBoardNameOne.equals("default.jpg")) {
  				originFile.delete();
@@ -386,12 +389,14 @@ public class StoreService {
  		
  		StoreBoard storeBoard = new StoreBoard();
  		storeBoard.setBoardNo(storeBoardAndBoardPic.getBoardNo());
+ 		System.out.println(storeBoard+"<---boardNo");
  		storeBoard.setBoardTitle(storeBoardAndBoardPic.getBoardTitle());
  		storeBoard.setBoardContent(storeBoardAndBoardPic.getBoardContent());
  		storeMapper.updateStoreBoard(storeBoardAndBoardPic);
  		
  		StoreBoardPic storeBoardPicc = new StoreBoardPic();
  		storeBoardPicc.setBoardNo(storeBoardAndBoardPic.getBoardNo());
+ 		System.out.println(storeBoardPicc+"<-------------------boardNO");
  		storeBoardPicc.setBoardPicNameOne(boardPicNameOne);
  		System.out.println(storeBoardPicc+"<------storeBoardPicc!!!!!!!!!!!!!!");
  		storeBoardPicc.setBoardPicNameTwo(boardPicNameTwo);
@@ -400,12 +405,14 @@ public class StoreService {
  		storeBoardPicc.setBoardPicNameFive(boardPicNameFive);
  		storePicMapper.updateStoreBoardPic(storeBoardPicc);
  		System.out.println(storePicMapper+"<-----------storePicMapper!!!!");
+ 		System.out.println(originStoreBoardNameOne+"<---originStoreBoardNameOne$$$$");
  		//사진저장
  		if(!originStoreBoardNameOne.equals("")) {
  			System.out.println(originStoreBoardNameOne+"<---originStoreBoardNameOne@@@@@@@");
  			//파일 저장
  			//경로 저장
  			File file = new File(path + boardPicNameOne);
+ 			System.out.println(path+"<--------path----");
  			try {
  				mf1.transferTo(file);
  			}catch(Exception e) {
